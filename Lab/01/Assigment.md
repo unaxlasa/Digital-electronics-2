@@ -30,7 +30,7 @@ Link to your `Digital-electronics-2` GitHub repository:
 
 ```c
 #define LED_GREEN   PB5 // AVR pin where green LED is connected
-#define SHORT_DELAY 250 // Delay in milliseconds
+#define SHORT_DELAY 500 // Delay in milliseconds
 #ifndef F_CPU           // Preprocessor directive allows for conditional
                         // compilation. The #ifndef means "if not defined".
 # define F_CPU 16000000 // CPU frequency in Hz required for delay
@@ -52,16 +52,14 @@ int main(void)
     // Infinite loop
     while (1)
     {
-    
-        for( a=0 ; a < 3 ; a = a + 1 )          //LED ON - OFF- ON (3 time loop)             
-        {
-            _delay_ms(SHORT_DELAY);             // Delay of 250ms
-            PORTB = PORTB ^ (1<<LED_GREEN);
-        }                                       //After we get out of the FOR the LED is still ON
-            
-            _delay_ms(1000);                    // Longer delay, the line
-            PORTB = PORTB ^ (1<<LED_GREEN);     //LED OFF, as it was in the beggining of the loop
-
+         _delay_ms(SHORT_DELAY);                // Delay of 500ms
+         PORTB = PORTB ^ (1<<LED_GREEN);        // LED ON
+         _delay_ms(SHORT_DELAY);                // Delay of 500ms
+         PORTB = PORTB ^ (1<<LED_GREEN);        // LED OFF
+         _delay_ms(SHORT_DELAY);                // Delay of 500ms
+         PORTB = PORTB ^ (1<<LED_GREEN);        // LED ON  
+         _delay_ms(1000);                       // Longer delay, the line
+         PORTB = PORTB ^ (1<<LED_GREEN);        // LED OFF, as it was in the beggining of the loop
     }
 
     // Will never reach this
