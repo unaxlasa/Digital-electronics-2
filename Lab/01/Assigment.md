@@ -59,7 +59,7 @@ int main(void)
          _delay_ms(SHORT_DELAY);                // Delay of 500ms
          PORTB = PORTB ^ (1<<LED_GREEN);        // LED ON  
          _delay_ms(1000);                       // Longer delay, the line
-         PORTB = PORTB ^ (1<<LED_GREEN);        // LED OFF, as it was in the beggining of the loop
+         PORTB = PORTB ^ (1<<LED_GREEN);        // LED OFF, as it was in the begining of the loop
     }
 
     // Will never reach this
