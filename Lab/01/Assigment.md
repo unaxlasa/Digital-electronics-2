@@ -47,10 +47,10 @@ int main(void)
         {
             _delay_ms(SHORT_DELAY);           // Pause several milliseconds
             PORTB = PORTB ^ (1<<LED_GREEN);
-        }
-        
-        _delay_ms(400);  // Extra pause while it is On
-        PORTB = PORTB ^ (1<<LED_GREEN);       //Turns it Off so at the end of the "for" is On again.
+        }   
+            
+            _delay_ms(400);  // Extra pause while it is on
+            PORTB = PORTB ^ (1<<LED_GREEN);       //Turns it Off so at the end of the "for" is On again.
 
     }
 
@@ -62,4 +62,4 @@ int main(void)
 
 2. Scheme of Morse code application, i.e. connection of AVR device, LED, resistor, and supply voltage. The image can be drawn on a computer or by hand. Always name all components and their values!
 
-   ![your figure](https://github.com/UTAN25/Digital-electronics-2/blob/main/Labs/01%20tools/assigmentdraw.PNG)
+   ![your figure](https://github.com/unaxlasa/Digital-electronics-2/blob/main/Lab/01/AssigmentDrawing.png)
