@@ -49,11 +49,12 @@ Link to your `Digital-electronics-2` GitHub repository:
  * Returns:  none
  **********************************************************************/
 //Function declaration
-GPIO_config_output(volatile uint8_t *reg_name, uint8_t pin_num);
-GPIO_config_input_pullup(volatile uint8_t *reg_name, uint8_t pin_num);
-GPIO_write_low(volatile uint8_t *reg_name, uint8_t pin_num);
-GPIO_write_high(volatile uint8_t *reg_name, uint8_t pin_num);
-GPIO_toggle(volatile uint8_t *reg_name, uint8_t pin_num);
+void GPIO_config_output(volatile uint8_t *reg_name, uint8_t pin_num);
+void GPIO_config_input_pullup(volatile uint8_t *reg_name, uint8_t pin_num);
+void GPIO_write_low(volatile uint8_t *reg_name, uint8_t pin_num);
+void GPIO_write_high(volatile uint8_t *reg_name, uint8_t pin_num);
+void GPIO_toggle(volatile uint8_t *reg_name, uint8_t pin_num);
+uint8_t GPIO_read(volatile uint8_t *reg_name, uint8_t pin_num);
 
 int main(void)
 {
