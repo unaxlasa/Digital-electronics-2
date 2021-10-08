@@ -29,8 +29,8 @@ Link to your `Digital-electronics-2` GitHub repository:
 ```c
 /* Defines -----------------------------------------------------------*/
 #define LED_GREEN   PB5     // AVR pin where green LED is connected
-#define LED_BLUE PB6
-#define BUTTON PB7
+#define LED_BLUE PB6	    // AVR pin where blue LED is connected
+#define BUTTON PB7	    // AVR pin where the button is connected
 #define BLINK_DELAY 500
 #ifndef F_CPU
 # define F_CPU 16000000     // CPU frequency in Hz required for delay, 16MHz
@@ -59,8 +59,8 @@ uint8_t GPIO_read(volatile uint8_t *reg_name, uint8_t pin_num);
 int main(void)
 {
     // Green LED at port B
-    GPIO_config_output(&DDRB, LED_GREEN);
-    GPIO_write_low(&PORTB, LED_GREEN);
+    	GPIO_config_output(&DDRB, LED_GREEN);
+    	GPIO_write_low(&PORTB, LED_GREEN);
 
     // Configure the second LED at port C
 	GPIO_config_output(&DDRC, LED_BLUE);
@@ -73,11 +73,11 @@ int main(void)
     {
         // Pause several milliseconds
         _delay_ms(BLINK_DELAY);
-		while(GPIO_read(&PORTD,BUTTON))
+		while(GPIO_read(&PORTD,BUTTON)) //WHile the button is pushed, the LEDs will change their condition
 		{
-			GPIO_toggle(&PORTB, LED_GREEN);
-			GPIO_toggle(&PORTB, LED_BLUE);
-			_delay_ms(BLINK_DELAY);
+			GPIO_toggle(&PORTB, LED_GREEN); //Change the LEDs situation
+			GPIO_toggle(&PORTB, LED_BLUE);	//Change the LEDs situation
+			_delay_ms(BLINK_DELAY);		//Short delay
 		}
     }
 
