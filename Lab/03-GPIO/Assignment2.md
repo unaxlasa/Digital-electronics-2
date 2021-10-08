@@ -17,7 +17,7 @@ Link to your `Digital-electronics-2` GitHub repository:
 | `float`    | 32 | -3.4e+38, ..., 3.4e+38 | Single-precision floating-point |
 | `void`     | 0 | No range | - |
 
-```
+
 ### GPIO library
 
 1. In your words, describe the difference between the declaration and the definition of the function in C.
