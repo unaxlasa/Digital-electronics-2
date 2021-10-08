@@ -1,5 +1,12 @@
 # Lab 3: UNAX LASA
-1. Fill in the following table and enter the number of bits and numeric range for the selected data types defined by C.
+
+Link to your `Digital-electronics-2` GitHub repository:
+
+   [https://github.com/unaxlasa/Digital-electronics-2](https://github.com/unaxlasa/Digital-electronics-2)
+
+### Data types in C
+
+1. Complete table.
 
 | **Data type** | **Number of bits** | **Range** | **Description** |
 | :-: | :-: | :-: | :-- | 
@@ -8,40 +15,8 @@
 | `uint16_t` | 16 | 0,1, ..., 65535 | Unsigned 16-bit integrer |
 | `int16_t`  | 16 | −32 768, ..., +32 767 | 16-bit integrer |
 | `float`    | 32 | -3.4e+38, ..., 3.4e+38 | Single-precision floating-point |
-| `void`     |  |  |  |
+| `void`     | 0 | No range | - |
 
-2. Any function in C contains a declaration (function prototype), a definition (block of code, body of the function); each declared function can be executed (called). Study this article and complete the missing sections in the following user defined function declaration, definition, and call.
-
-```c
-#include <avr/io.h>
-
-// Function declaration (prototype)
-uint16_t calculate(uint8_t, uint8_t);
-
-int main(void)
-{
-    uint8_t a = 156;
-    uint8_t b = 14;
-    uint16_t c;
-
-    // Function call
-    c = calculate(a, b);
-
-    while (1)
-    {
-    }
-    return 0;
-}
-
-// Function definition (body)
-int calculate(uint8_t x, uint8_t y)
-{
-    uint16_t result;    // result = x^2 + 2xy + y^2
-
-    result = x*x + 2*x*y + y*y;
-
-    return result;
-}
 ```
 ### GPIO library
 
@@ -70,4 +45,4 @@ int calculate(uint8_t x, uint8_t y)
 
 1. Scheme of traffic light application with one red/yellow/green light for cars and one red/green light for pedestrians. Connect AVR device, LEDs, resistors, one push button (for pedestrians), and supply voltage. The image can be drawn on a computer or by hand. Always name all components and their values!
 
-   ![your figure]()
+   ![your figure](https://github.com/unaxlasa/Digital-electronics-2/blob/main/Lab/03-GPIO/Assignment2Drawing.jpg)
