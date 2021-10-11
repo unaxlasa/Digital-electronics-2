@@ -73,7 +73,7 @@ int main(void)
     {
         // Pause several milliseconds
         _delay_ms(BLINK_DELAY);
-		while(!GPIO_read(&PORTD,BUTTON)) //WHile the button is NOT pushed, the LEDs will change their condition
+		while(!GPIO_read(&PORTD,BUTTON)) //WHile the button is pushed, the LEDs will change their condition
 		{
 			GPIO_toggle(&PORTB, LED_GREEN); //Change the LEDs situation
 			GPIO_toggle(&PORTB, LED_BLUE);	//Change the LEDs situation
