@@ -56,7 +56,7 @@ int main(void)
     {
         // Pause several milliseconds
         _delay_ms(BLINK_DELAY);
-		while(GPIO_read(&PORTD,BUTTON))
+		while(!GPIO_read(&PORTD,BUTTON))
 		{
 			GPIO_toggle(&PORTB, LED_GREEN);
 			GPIO_toggle(&PORTB, LED_BLUE);
