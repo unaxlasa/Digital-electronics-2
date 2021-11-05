@@ -12,21 +12,12 @@ Link to this file in your GitHub repository:
    | **Push button** | **PC0[A0] voltage** | **ADC value (calculated)** | **ADC value (measured)** |
    | :-: | :-: | :-: | :-: |
    | Right  | 0&nbsp;V | 0   | 0 |
-   | Up     | 0.495&nbsp;V | 101 | 146 |
-   | Down   |  0.784&nbsp;V     |   160  | 329 |
-   | Left   |    1.01&nbsp;V   |  207   | 507 |
-   | Select |   2&nbsp;V    |   409  |  743|
+   | Up     | 0.495&nbsp;V | 101 | 103 |
+   | Down   |  1.203&nbsp;V     |  246 | 252 |
+   | Left   |    1.969&nbsp;V   |  403   | 397 |
+   | Select |   3.182&nbsp;V    |   651  |  656 |
    | none   |    5&nbsp;V   |  1023   | 1023 |
 
-   | **Operation** | **Register(s)** | **Bit(s)** | **Description** |
-   | :-- | :-: | :-: | :-- |
-   | Voltage reference    | ADMUX | REFS1:0 | 01: AVcc voltage reference (5V), ... |
-   | Input channel        | ADMUX | MUX3:0 | 0000: ADC0, 0001: ADC1, ... |
-   | ADC enable           | ADCSRA | ADEN |  |
-   | Start conversion     | ADCSRA  | ADSC |  |
-   | ADC interrupt enable |  |  |  |
-   | ADC clock prescaler  |  | ADPS2:0 | 000: Division factor 2, 001: 2, 010: 4, ...|
-   | ADC 10-bit result    |  |  |  |
 2. Code listing of ACD interrupt service routine for sending data to the LCD/UART and identification of the pressed button. Always use syntax highlighting and meaningful comments:
 
 ```c
@@ -39,10 +30,68 @@ ISR(ADC_vect)
     uint16_t value = 0;
     char lcd_string[4] = "0000";
 
-    value = ADC;                  // Copy ADC result to 16-bit variable
-    itoa(value, lcd_string, 10);  // Convert decimal value to string
+    value = ADC;                  //Copy ADC result to 16-bit variable
+    itoa(value, lcd_string, 10);  //Convert decimal value to string
 
-    // WRITE YOUR CODE HERE
+    lcd_gotoxy(8,0);
+    lcd_puts("    ");             //Clear the value displayed before
+
+    lcd_puts(lcd_string);         //Display decimal value on LCD
+    uart_puts(lcd_string);        //Display decimal value on UART
+    uart_puts("    ");
+    
+    itoa(value, lcd_string, 16);  //Convert the value into hexadecimal
+
+    lcd_gotoxy(13,0);             //Go to x=13, y=0 coordinates
+    lcd_puts("    ");             //Clear the value displayed before
+    
+    lcd_puts(lcd_string);         //Display hexadecimal value on LCD
+    uart_puts(lcd_string);        //Display hexadecimal value on UART
+    uart_puts("    ");
+    
+    lcd_gotoxy(8,1);
+    lcd_puts("      ");           //Clear the value displayed before
+    
+    if (value>=10)                //Depending the value, we will display a button or another
+    {                             //Based on the table we completed before
+        if (value>150)
+        {
+            if (value>300)
+            {
+                if (value>500)
+                {
+                    if (value>800)
+                    {
+                         lcd_puts("none");       //Display the pressed button on the LCD
+                         uart_puts("none");      //Display the pressed button on the UART
+                    } 
+                    else{ 
+                        lcd_puts("Select"); 
+                        uart_puts("Select"); 
+                    }
+                }
+                else{
+                     lcd_puts("Left"); 
+                     uart_puts("Left"); 
+                }
+            } 
+            else{
+                  lcd_puts("Down"); 
+                  uart_puts("Down"); 
+            }
+        }
+        else{
+            lcd_puts("Up");
+            uart_puts("Up"); 
+        }
+    }
+    else{ 
+         lcd_puts("Right"); 
+         uart_puts("Right"); 
+    }
+    
+    uart_puts("      ");
+}
 
 }
 ```
@@ -65,4 +114,4 @@ Consider an application for temperature measurement and display. Use temperature
 
 1. Scheme of temperature meter. The image can be drawn on a computer or by hand. Always name all components and their values.
 
-   ![your figure]()
+   ![your figure](https://github.com/unaxlasa/Digital-electronics-2/blob/main/Lab/07-uart/Drawing7.png)
