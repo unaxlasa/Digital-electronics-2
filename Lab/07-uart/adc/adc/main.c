@@ -98,7 +98,7 @@ ISR(ADC_vect)
         itoa(value, lcd_string, 10);  // Convert decimal value to string
 		lcd_gotoxy(8, 0);
 		lcd_puts(lcd_string);
-		// Sen the same value to UART
+		// Send the same value to UART
 		uart_puts(lcd_string);
 		uart_puts("  ");
 		//Display value in hexa
