@@ -1,8 +1,8 @@
-# Lab 8: YOUR_FIRSTNAME LASTNAME
+# Lab 8: UNAX LASA
 
 Link to this file in your GitHub repository:
 
-[https://github.com/your-github-account/repository-name/lab_name](https://github.com/...)
+[https://github.com/unaxlasa/Digital-electronics-2](https://github.com/unaxlasa/Digital-electronics-2)
 
 ### Arduino Uno pinout
 
@@ -104,4 +104,4 @@ Consider an application for temperature and humidity measurement and display. Us
 
 1. FSM state diagram picture of meteo station. The image can be drawn on a computer or by hand. Concise name of individual states and describe the transitions between them.
 
-   ![your figure]()
+   ![your figure](https://github.com/unaxlasa/Digital-electronics-2/blob/main/Lab/08-i2c/FlowChart.png)
